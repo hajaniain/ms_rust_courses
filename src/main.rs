@@ -12,6 +12,19 @@ struct Person {
     likes_oranges: bool
 }
 
+enum WebEvent {
+    PageLoad,
+    PageUnload,
+    Keypress(char),
+    Paste(String),
+    Click {x:i64, y:i64},
+}
+
+enum Option<T> {
+    Some(T),
+    None,
+}
+
 fn main() {
     let x = 0.5;
     println!("x: {}", x);
@@ -49,6 +62,9 @@ fn main() {
 
     println!("Person name is: {}", person.name);
 
+    let quit = WebEvent::Keypress('q');
+
+    let something = Some(1);
 }
 
 fn array_sum(array: [i32; 3]) -> i32 {
