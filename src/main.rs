@@ -6,6 +6,12 @@ struct Car {
 
 struct Point2D(u32, u32);
 
+struct Person {
+    name: String,
+    age: u8,
+    likes_oranges: bool
+}
+
 fn main() {
     let x = 0.5;
     println!("x: {}", x);
@@ -34,6 +40,14 @@ fn main() {
 
     let Point2D(x, y) = origin;
     println!("Point contains {:?} and {:?}", x, y);
+
+    let person = Person {
+        name: String::from("Adam"),
+        likes_oranges: true,
+        age: 25,
+    };
+
+    println!("Person name is: {}", person.name);
 
 }
 
