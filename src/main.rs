@@ -32,6 +32,58 @@ enum Option<T> {
 struct Student {
     name: String,
 }
+
+struct Film {
+    title: String,
+    director: String,
+    studio: String,
+}
+
+struct Book {
+    title: String,
+    author: String,
+    publisher: String,
+}
+
+struct Album {
+    title: String,
+    artist: String,
+    label: String
+}
+
+// trait Catalog {
+//     fn describe(&self);
+// }
+
+trait Catalog {
+    fn describe(&self) {
+        println!("We need more information about this type of media");
+    }
+}
+
+impl Catalog for Film {
+    fn describe(&self) {
+        println!(
+            "{} was directed by {} through {} studios",
+            self.title,
+            self.director,
+            self.studio
+        );
+    }
+}
+
+impl Catalog for Book {
+    fn describe(&self) {
+        println!(
+            "{} was written by {} and published by {}",
+            self.title,
+            self.author,
+            self.publisher
+        );
+    }
+}
+
+impl Catalog for Album {}
 fn main() {
     let x = 0.5;
     println!("x: {}", x);
@@ -198,6 +250,31 @@ fn main() {
 
     let bio_students = enrollment.get("biology");
     let students = enrollment.remove("biology");
+
+    // TRAITS
+    let capt_marvel = Film {
+        title: String::from("Captain Marvel"),
+        director: String::from("Anna Boden and Ryan Fleck"),
+        studio: String::from("Marvel")
+    };
+
+    capt_marvel.describe();
+
+    let elantris = Book {
+        title: String::from("Elantris"),
+        author: String::from("Brandon Sanderson"),
+        publisher: String::from("Tor Books")
+    };
+
+    elantris.describe();
+
+    let let_it_be = Album {
+        title: String::from("Let it be"),
+        artist: String::from("Beatles"),
+        label: String::from("Apple")
+    };
+
+    let_it_be.describe();
 }
 
 fn array_sum(array: [i32; 3]) -> i32 {
